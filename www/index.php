@@ -25,59 +25,86 @@
 
 require_once("header.php");
 
+?>
+
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Stock Selector</title>
+	<script src="js/jquery-1.11.3.min.js"></script>
+	<script src="js/jquery.dataTables.min.js"></script>
+	<script src="js/dataTables.bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/jquery.dataTables.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/dataTables.bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+
+<script>
+$(document).ready(function() {
+	$('#scripts').DataTable({
+		"paging":   false,
+	});
+});
+</script>
+
+<?php
+
 $results = $db->query("SELECT * FROM company LEFT JOIN stocks ON company.id = stocks.company_id WHERE date = '29-12-2015'");
 
-echo "<table border=1>";
+echo "<table id='scripts' class='table table-striped table-bordered' width='100%' cellspacing='0'>";
 
+echo "<thead>";
 echo "<tr>";
-echo "<td>" . 'name' . "</td>";
-echo "<td>" . "</td>";
-echo "<td>" . 'price' . "</td>";
-echo "<td>" . 'high_52' . "</td>";
-echo "<td>" . 'low_52' . "</td>";
-echo "<td>" . 'pe' . "</td>";
-echo "<td>" . 'pb' . "</td>";
-echo "<td>" . 'enterprise_value' . "</td>";
-echo "<td>" . 'market_cap' . "</td>";
-echo "<td>" . 'altman_z_score' . "</td>";
-echo "<td>" . 'piotroski_f_score' . "</td>";
-echo "<td>" . 'modified_c_score' . "</td>";
-echo "<td>" . 'current_pe' . "</td>";
-echo "<td>" . 'median_pe' . "</td>";
-echo "<td>" . 'current_pb' . "</td>";
-echo "<td>" . 'median_pb' . "</td>";
-echo "<td>" . 'earning_yield' . "</td>";
-echo "<td>" . 'peg' . "</td>";
-echo "<td>" . 'return_1_day' . "</td>";
-echo "<td>" . 'return_1_week' . "</td>";
-echo "<td>" . 'return_1_month' . "</td>";
-echo "<td>" . 'return_3_months' . "</td>";
-echo "<td>" . 'return_1_year' . "</td>";
-echo "<td>" . 'return_10_years' . "</td>";
-echo "<td>" . 'roe' . "</td>";
-echo "<td>" . 'operating_margin' . "</td>";
-echo "<td>" . 'free_cash_flow' . "</td>";
-echo "<td>" . 'debt_equity_ratio' . "</td>";
-echo "<td>" . 'long_term_debt' . "</td>";
-echo "<td>" . 'networth' . "</td>";
-echo "<td>" . 'revenue_growth_1y' . "</td>";
-echo "<td>" . 'eps_growth_1y' . "</td>";
-echo "<td>" . 'book_value_growth_1y' . "</td>";
-echo "<td>" . 'revenue_growth_3y' . "</td>";
-echo "<td>" . 'eps_growth_3y' . "</td>";
-echo "<td>" . 'book_value_growth_3y' . "</td>";
-echo "<td>" . 'revenue_growth_5y' . "</td>";
-echo "<td>" . 'eps_growth_5y' . "</td>";
-echo "<td>" . 'book_value_growth_5y' . "</td>";
-echo "<td>" . 'ev_to_ebidta' . "</td>";
-echo "<td>" . 'price_to_sales' . "</td>";
-echo "<td>" . 'price_to_cash_flow' . "</td>";
+echo "<th>" . 'name' . "</th>";
+echo "<th>" . 'price' . "</th>";
+echo "<th>" . 'high<br>52' . "</th>";
+echo "<th>" . 'low<br>52' . "</th>";
+echo "<th>" . 'pe' . "</th>";
+echo "<th>" . 'pb' . "</th>";
+echo "<th>" . 'enterprise<br>value' . "</th>";
+echo "<th>" . 'market<br>cap' . "</th>";
+echo "<th>" . 'altman<br>z<br>score' . "</th>";
+echo "<th>" . 'piot<br>roski<br>f<br>score' . "</th>";
+echo "<th>" . 'modi<br>fied<br>c<br>score' . "</th>";
+echo "<th>" . 'curr<br>ent<br>pe' . "</th>";
+echo "<th>" . 'median<br>pe' . "</th>";
+echo "<th>" . 'current<br>pb' . "</th>";
+echo "<th>" . 'median<br>pb' . "</th>";
+echo "<th>" . 'earning<br>yield' . "</th>";
+echo "<th>" . 'peg' . "</th>";
+echo "<th>" . 'return<br>1<br>day' . "</th>";
+echo "<th>" . 'return<br>1<br>week' . "</th>";
+echo "<th>" . 'return<br>1<br>month' . "</th>";
+echo "<th>" . 'return<br>3<br>months' . "</th>";
+echo "<th>" . 'return<br>1<br>year' . "</th>";
+echo "<th>" . 'return<br>10<br>years' . "</th>";
+echo "<th>" . 'roe' . "</th>";
+echo "<th>" . 'operating<br>margin' . "</th>";
+echo "<th>" . 'free<br>cash<br>flow' . "</th>";
+echo "<th>" . 'debt<br>equity<br>ratio' . "</th>";
+echo "<th>" . 'long<br>term<br>debt' . "</th>";
+echo "<th>" . 'networth' . "</th>";
+echo "<th>" . 'revenue<br>growth<br>1y' . "</th>";
+echo "<th>" . 'eps<br>growth<br>1y' . "</th>";
+echo "<th>" . 'book<br>value<br>growth<br>1y' . "</th>";
+echo "<th>" . 'revenue<br>growth<br>3y' . "</th>";
+echo "<th>" . 'eps<br>growth<br>3y' . "</th>";
+echo "<th>" . 'book<br>value<br>growth<br>3y' . "</th>";
+echo "<th>" . 'revenue<br>growth<br>5y' . "</th>";
+echo "<th>" . 'eps<br>growth<br>5y' . "</th>";
+echo "<th>" . 'book<br>value<br>growth<br>5y' . "</th>";
+echo "<th>" . 'ev<br>to<br>ebidta' . "</th>";
+echo "<th>" . 'price<br>to<br>sales' . "</th>";
+echo "<th>" . 'price<br>to<br>cash<br>flow' . "</th>";
 echo "</tr>";
+echo "</thead>";
 
 while($row = $results->fetchArray()) {
 	echo "<tr>";
-	echo "<td>" . $row['name'] . "</td>";
-	echo "<td>" . "<a href='editcompany.php?id=" . $row['id'] . "'>edit</a>" . "</td>";
+	echo "<td>" . "<a href='editcompany.php?id=" . $row['id'] . "'>" . $row['name'] . "</a>" . "</td>";
 	echo "<td>" . $row['price'] . "</td>";
 	echo "<td>" . $row['high_52'] . "</td>";
 	echo "<td>" . $row['low_52'] . "</td>";
@@ -122,7 +149,9 @@ while($row = $results->fetchArray()) {
 }
 
 echo "</table>";
-
-require_once("footer.php");
-
 ?>
+
+<?php require_once("footer.php"); ?>
+
+</body>
+</html>
